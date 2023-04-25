@@ -6,12 +6,14 @@ import cz.cvut.fit.biand.homework2.features.list.data.remote.CharacterRetrofitDa
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
 import cz.cvut.fit.biand.homework2.features.list.presentation.ListViewModel
+import cz.cvut.fit.biand.homework2.features.list.data.CharactersRepository
+import org.koin.core.module.dsl.factoryOf
 import retrofit2.Retrofit
 
 val listModule get() = module {
     single { get<Retrofit>().create(CharactersApiDescription::class.java) }
     factory<CharacterRemoteDataSource> { CharacterRetrofitDataSource(get()) }
 
-
+    factoryOf(::CharactersRepository)
     viewModelOf(::ListViewModel)
 }

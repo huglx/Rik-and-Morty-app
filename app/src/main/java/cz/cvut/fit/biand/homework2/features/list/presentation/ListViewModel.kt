@@ -11,8 +11,6 @@ class ListViewModel(
     private val charactersRepository: CharactersRepository
 ) : ViewModel() {
 
-
-
     private val _characters = MutableStateFlow(CharactersDataSource.getAllCharacters())
     val characters: StateFlow<List<Character>> = _characters
 }

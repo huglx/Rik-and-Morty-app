@@ -1,4 +1,4 @@
-package cz.cvut.fit.biand.homework2.system
+package cz.cvut.fit.biand.homework2.features.detail.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import cz.cvut.fit.biand.homework2.R
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
-import cz.cvut.fit.biand.homework2.features.detail.presentation.DetailViewModel
 import cz.cvut.fit.biand.homework2.ui.theme.Blue
 import cz.cvut.fit.biand.homework2.ui.theme.Gray
 
@@ -47,7 +46,6 @@ fun DetailScreen(
             viewModel.getCharacter(id)
         }
     }
-
     DetailScreenContent(
         character = character,
         favorite = favorite,

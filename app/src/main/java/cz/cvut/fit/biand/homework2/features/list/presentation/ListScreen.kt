@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
@@ -32,27 +30,21 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import cz.cvut.fit.biand.homework2.R
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
-import cz.cvut.fit.biand.homework2.navigation.Screen
-import cz.cvut.fit.biand.homework2.ui.theme.Blue
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ListScreen(
-    navController: NavController,
+    navigateToSearch: () -> Unit,
+    navigateToDetails: (Int) -> Unit,
     viewModel: ListViewModel = koinViewModel(),
 ) {
     val characters by viewModel.characters.collectAsState()
     ListScreenContent(
         characters = characters,
-        onSearchClicked = {
-            navController.navigate(Screen.SearchScreen.route)
-        },
-        onCharacterClicked = {
-            navController.navigate(Screen.DetailScreen.route + "/$it")
-        },
+        onSearchClicked = navigateToSearch,
+        onCharacterClicked = navigateToDetails
     )
 }
 
@@ -89,9 +81,6 @@ fun ListScreenContent(
                 },
             )
         },
-        bottomBar = {
-            BottomBar()
-        },
     ) {
         LazyColumn(
             modifier = Modifier
@@ -105,44 +94,6 @@ fun ListScreenContent(
                 )
             }
         }
-    }
-}
-
-@Composable
-fun BottomBar() {
-    BottomNavigation() {
-        BottomNavigationItem(
-            label = {
-                Text(
-                    text = stringResource(id = R.string.characters),
-                    color = Blue,
-                )
-            },
-            onClick = {},
-            selected = true,
-            icon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_characters),
-                    tint = Blue,
-                    contentDescription = "Favourite navigation icon",
-                )
-            },
-        )
-        BottomNavigationItem(
-            label = {
-                Text(
-                    text = stringResource(id = R.string.favorites),
-                )
-            },
-            selected = false,
-            onClick = {},
-            icon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_favorites_filled),
-                    contentDescription = "Favourite navigation icon",
-                )
-            },
-        )
     }
 }
 
