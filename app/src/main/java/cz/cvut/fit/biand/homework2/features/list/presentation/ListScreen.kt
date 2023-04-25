@@ -1,4 +1,4 @@
-package cz.cvut.fit.biand.homework2.system
+package cz.cvut.fit.biand.homework2.features.list.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -36,13 +36,13 @@ import androidx.navigation.NavController
 import cz.cvut.fit.biand.homework2.R
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
 import cz.cvut.fit.biand.homework2.navigation.Screen
-import cz.cvut.fit.biand.homework2.features.list.presentation.ListViewModel
 import cz.cvut.fit.biand.homework2.ui.theme.Blue
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ListScreen(
     navController: NavController,
-    viewModel: ListViewModel = ListViewModel(),
+    viewModel: ListViewModel = koinViewModel(),
 ) {
     val characters by viewModel.characters.collectAsState()
     ListScreenContent(
@@ -69,7 +69,9 @@ fun ListScreenContent(
             TopAppBar(
                 title = {
                     Row(
-                        modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .focusRequester(focusRequester),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically,
                     ) {

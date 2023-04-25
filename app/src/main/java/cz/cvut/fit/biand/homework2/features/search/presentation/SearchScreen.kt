@@ -31,7 +31,7 @@ import androidx.navigation.NavController
 import cz.cvut.fit.biand.homework2.R
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
 import cz.cvut.fit.biand.homework2.navigation.Screen
-import cz.cvut.fit.biand.homework2.system.CharacterListItem
+import cz.cvut.fit.biand.homework2.features.list.presentation.CharacterListItem
 
 @Composable
 fun SearchScreen(

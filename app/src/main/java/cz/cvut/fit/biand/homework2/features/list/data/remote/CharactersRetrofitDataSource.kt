@@ -4,10 +4,10 @@ import cz.cvut.fit.biand.homework2.features.list.data.CharacterRemoteDataSource
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
 
 class CharacterRetrofitDataSource(
-    private val characterApiDescription: CharacterApiDescription
+    private val charactersApiDescription: CharactersApiDescription
 ): CharacterRemoteDataSource  {
     override suspend fun getCharacters(): List<Character> {
-        return characterApiDescription.getCharacters().map {
+        return charactersApiDescription.getCharacters().map {
             it.toCharacter()
         }
     }
