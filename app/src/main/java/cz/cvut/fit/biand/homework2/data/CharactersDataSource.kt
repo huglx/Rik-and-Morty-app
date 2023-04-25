@@ -1,7 +1,7 @@
 package cz.cvut.fit.biand.homework2.data
 
 import cz.cvut.fit.biand.homework2.R
-import cz.cvut.fit.biand.homework2.model.Character
+import cz.cvut.fit.biand.homework2.features.list.domain.Character
 
 object CharactersDataSource {
 

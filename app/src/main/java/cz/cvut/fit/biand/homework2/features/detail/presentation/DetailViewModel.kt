@@ -1,8 +1,8 @@
-package cz.cvut.fit.biand.homework2.presentation
+package cz.cvut.fit.biand.homework2.features.detail.presentation
 
 import androidx.lifecycle.ViewModel
 import cz.cvut.fit.biand.homework2.data.CharactersDataSource
-import cz.cvut.fit.biand.homework2.model.Character
+import cz.cvut.fit.biand.homework2.features.list.domain.Character
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

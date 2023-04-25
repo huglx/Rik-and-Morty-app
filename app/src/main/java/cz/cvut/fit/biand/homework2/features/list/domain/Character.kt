@@ -1,4 +1,4 @@
-package cz.cvut.fit.biand.homework2.model
+package cz.cvut.fit.biand.homework2.features.list.domain
 
 import androidx.annotation.DrawableRes
 

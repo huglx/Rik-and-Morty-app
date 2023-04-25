@@ -29,9 +29,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import cz.cvut.fit.biand.homework2.R
-import cz.cvut.fit.biand.homework2.model.Character
+import cz.cvut.fit.biand.homework2.features.list.domain.Character
 import cz.cvut.fit.biand.homework2.navigation.Screen
-import cz.cvut.fit.biand.homework2.presentation.SearchViewModel
+import cz.cvut.fit.biand.homework2.features.search.presentation.SearchViewModel
 
 @Composable
 fun SearchScreen(

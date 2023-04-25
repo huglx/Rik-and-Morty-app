@@ -6,9 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import cz.cvut.fit.biand.homework2.presentation.DetailViewModel
-import cz.cvut.fit.biand.homework2.presentation.ListViewModel
-import cz.cvut.fit.biand.homework2.presentation.SearchViewModel
+import cz.cvut.fit.biand.homework2.features.detail.presentation.DetailViewModel
+import cz.cvut.fit.biand.homework2.features.list.presentation.ListViewModel
+import cz.cvut.fit.biand.homework2.features.search.presentation.SearchViewModel
 import cz.cvut.fit.biand.homework2.system.DetailScreen
 import cz.cvut.fit.biand.homework2.system.ListScreen
 import cz.cvut.fit.biand.homework2.system.SearchScreen

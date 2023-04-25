@@ -34,9 +34,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import cz.cvut.fit.biand.homework2.R
-import cz.cvut.fit.biand.homework2.model.Character
+import cz.cvut.fit.biand.homework2.features.list.domain.Character
 import cz.cvut.fit.biand.homework2.navigation.Screen
-import cz.cvut.fit.biand.homework2.presentation.ListViewModel
+import cz.cvut.fit.biand.homework2.features.list.presentation.ListViewModel
 import cz.cvut.fit.biand.homework2.ui.theme.Blue
 
 @Composable

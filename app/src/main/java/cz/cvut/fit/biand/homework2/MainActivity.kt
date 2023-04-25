@@ -5,9 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import cz.cvut.fit.biand.homework2.navigation.Navigation
-import cz.cvut.fit.biand.homework2.presentation.DetailViewModel
-import cz.cvut.fit.biand.homework2.presentation.ListViewModel
-import cz.cvut.fit.biand.homework2.presentation.SearchViewModel
+import cz.cvut.fit.biand.homework2.features.detail.presentation.DetailViewModel
+import cz.cvut.fit.biand.homework2.features.list.presentation.ListViewModel
+import cz.cvut.fit.biand.homework2.features.search.presentation.SearchViewModel
 import cz.cvut.fit.biand.homework2.ui.theme.Homework2Theme
 
 class MainActivity : ComponentActivity() {
