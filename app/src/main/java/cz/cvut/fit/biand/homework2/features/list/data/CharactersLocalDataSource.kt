@@ -1,6 +1,8 @@
 package cz.cvut.fit.biand.homework2.features.list.data
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
 
-interface CharactersRemoteDataSource {
+interface CharactersLocalDataSource {
     suspend fun getCharacters(): List<Character>
-}
+
+    suspend fun insert(characters: List<Character>)
+ }

@@ -8,7 +8,7 @@ import cz.cvut.fit.biand.homework2.core.data.db.CharacterEntity
 @Dao
 interface ListDao {
     @Query("SELECT * FROM character")
-    suspend fun getCanteen(): List<CharacterEntity>
+    suspend fun getCharacters(): List<CharacterEntity>
 
     @Insert
     suspend fun insert(canteen: List<CharacterEntity>)

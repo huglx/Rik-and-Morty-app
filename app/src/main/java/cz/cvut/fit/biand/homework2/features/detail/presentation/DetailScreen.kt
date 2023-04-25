@@ -46,6 +46,7 @@ fun DetailScreen(
             viewModel.getCharacter(id)
         }
     }
+    Text(text = id.toString())
     DetailScreenContent(
         character = character,
         favorite = favorite,

@@ -1,17 +1,19 @@
 package cz.cvut.fit.biand.homework2.features.list.data.remote
 
-import cz.cvut.fit.biand.homework2.features.list.data.CharacterRemoteDataSource
+import cz.cvut.fit.biand.homework2.features.list.data.CharactersRemoteDataSource
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
 
-class CharacterRetrofitDataSource(
+class CharactersRetrofitDataSource(
     private val charactersApiDescription: CharactersApiDescription
-): CharacterRemoteDataSource  {
+): CharactersRemoteDataSource  {
     override suspend fun getCharacters(): List<Character> {
         return charactersApiDescription.getCharacters().results.map {
             it.toCharacter()
         }
     }
 }
+
+
 
 private fun CharacterApi.toCharacter(): Character {
     return Character(
