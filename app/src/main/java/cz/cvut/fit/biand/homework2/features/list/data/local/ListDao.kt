@@ -3,7 +3,7 @@ package cz.cvut.fit.biand.homework2.features.list.data.local
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import cz.cvut.fit.biand.homework2.coure.data.db.CharacterEntity
+import cz.cvut.fit.biand.homework2.core.data.db.CharacterEntity
 
 @Dao
 interface ListDao {

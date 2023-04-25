@@ -1,4 +1,4 @@
-package cz.cvut.fit.biand.homework2.coure.data.db
+package cz.cvut.fit.biand.homework2.core.data.db
 
 import android.content.Context
 import androidx.room.Database

@@ -1,7 +1,7 @@
-package cz.cvut.fit.biand.homework2.coure.di
+package cz.cvut.fit.biand.homework2.core.di
 
-import cz.cvut.fit.biand.homework2.coure.data.api.RetrofitProvider
-import cz.cvut.fit.biand.homework2.coure.data.db.CharactersDB
+import cz.cvut.fit.biand.homework2.core.data.api.RetrofitProvider
+import cz.cvut.fit.biand.homework2.core.data.db.CharactersDB
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

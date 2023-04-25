@@ -1,4 +1,4 @@
-package cz.cvut.fit.biand.homework2.system
+package cz.cvut.fit.biand.homework2.features.search.presentation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,7 +31,7 @@ import androidx.navigation.NavController
 import cz.cvut.fit.biand.homework2.R
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
 import cz.cvut.fit.biand.homework2.navigation.Screen
-import cz.cvut.fit.biand.homework2.features.search.presentation.SearchViewModel
+import cz.cvut.fit.biand.homework2.system.CharacterListItem
 
 @Composable
 fun SearchScreen(

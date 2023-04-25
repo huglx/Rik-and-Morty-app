@@ -11,7 +11,7 @@ import cz.cvut.fit.biand.homework2.features.list.presentation.ListViewModel
 import cz.cvut.fit.biand.homework2.features.search.presentation.SearchViewModel
 import cz.cvut.fit.biand.homework2.system.DetailScreen
 import cz.cvut.fit.biand.homework2.system.ListScreen
-import cz.cvut.fit.biand.homework2.system.SearchScreen
+import cz.cvut.fit.biand.homework2.features.search.presentation.SearchScreen
 
 @Composable
 fun Navigation(

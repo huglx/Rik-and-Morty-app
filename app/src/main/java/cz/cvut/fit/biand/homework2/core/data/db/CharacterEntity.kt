@@ -1,6 +1,5 @@
-package cz.cvut.fit.biand.homework2.coure.data.db
+package cz.cvut.fit.biand.homework2.core.data.db
 
-import androidx.annotation.DrawableRes
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -15,5 +14,5 @@ data class CharacterEntity(
     val gender: String,
     val origin: String,
     val location: String,
-    @DrawableRes val imageRes: Int
+    val image: String
 )
