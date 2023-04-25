@@ -1,6 +1,13 @@
 package cz.cvut.fit.biand.homework2.features.list.data.remote
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
+@Serializable
+@SerialName("results")
+data class Results(
+    val results: List<CharacterApi>
+)
 
 @Serializable
 data class CharacterApi(

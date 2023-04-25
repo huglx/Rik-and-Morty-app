@@ -7,7 +7,7 @@ class CharacterRetrofitDataSource(
     private val charactersApiDescription: CharactersApiDescription
 ): CharacterRemoteDataSource  {
     override suspend fun getCharacters(): List<Character> {
-        return charactersApiDescription.getCharacters().map {
+        return charactersApiDescription.getCharacters().results.map {
             it.toCharacter()
         }
     }
