@@ -1,22 +1,43 @@
 package cz.cvut.fit.biand.homework2.features.detail.presentation
 
 import androidx.lifecycle.ViewModel
-import cz.cvut.fit.biand.homework2.data.CharactersDataSource
+import androidx.lifecycle.viewModelScope
+import cz.cvut.fit.biand.homework2.features.detail.data.DetailRepository
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
-class DetailViewModel : ViewModel() {
-    private val _character = MutableStateFlow<Character?>(null)
-    val character: StateFlow<Character?> = _character
+class DetailViewModel(
+    private val detailRepository: DetailRepository
+): ViewModel() {
+
+    private val _character = MutableStateFlow(DetailState(DetailUIState.Loading))
+    val character get() = _character
 
     val favorite: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     fun getCharacter(id: Int) {
-        _character.value = CharactersDataSource.getCharacter(id)
+        viewModelScope.launch {
+            _character.value = DetailState(DetailUIState.Loaded(
+                data = detailRepository.getDetail(id).first()
+            ))
+        }
     }
 
     fun onFavoriteClick() {
         favorite.value = !favorite.value
     }
 }
+
+sealed interface DetailUIState{
+    object Loading: DetailUIState
+
+    data class Loaded(
+        val data: Character
+    ): DetailUIState
+}
+
+data class DetailState(
+    val state: DetailUIState
+)
+

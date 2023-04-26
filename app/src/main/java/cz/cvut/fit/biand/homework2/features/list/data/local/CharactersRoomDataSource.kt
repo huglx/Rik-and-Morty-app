@@ -3,6 +3,7 @@ package cz.cvut.fit.biand.homework2.features.list.data.local
 import cz.cvut.fit.biand.homework2.core.data.db.CharacterEntity
 import cz.cvut.fit.biand.homework2.features.list.data.CharactersLocalDataSource
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import cz.cvut.fit.biand.homework2.features.list.domain.toCharacter
 
 class CharactersRoomDataSource(
     private val listDao: ListDao
@@ -34,16 +35,3 @@ private fun Character.toCharacterEntity(): CharacterEntity {
     )
 }
 
-private fun CharacterEntity.toCharacter(): Character {
-    return Character(
-        id = id,
-        name = name,
-        status = status,
-        species = species,
-        type = type,
-        gender = gender,
-        origin = origin,
-        location = location,
-        image = image,
-    )
-}

@@ -1,6 +1,5 @@
 package cz.cvut.fit.biand.homework2.features.detail.presentation
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,32 +26,43 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil.compose.AsyncImage
 import cz.cvut.fit.biand.homework2.R
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import cz.cvut.fit.biand.homework2.features.list.presentation.LoadingState
 import cz.cvut.fit.biand.homework2.ui.theme.Blue
 import cz.cvut.fit.biand.homework2.ui.theme.Gray
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun DetailScreen(
-    navController: NavController,
-    viewModel: DetailViewModel = DetailViewModel(),
+    navigateToHome: () -> Unit,
+    viewModel: DetailViewModel = koinViewModel(),
     id: Int?,
 ) {
-    val character by viewModel.character.collectAsState()
+    val character by viewModel.character.collectAsStateWithLifecycle()
     val favorite by viewModel.favorite.collectAsState()
     LaunchedEffect(Unit) {
         id?.let {
             viewModel.getCharacter(id)
         }
     }
-    Text(text = id.toString())
-    DetailScreenContent(
-        character = character,
-        favorite = favorite,
-        onFavorite = viewModel::onFavoriteClick,
-        onNavigateBack = { navController.popBackStack() },
-    )
+
+    when(val state = character.state) {
+        DetailUIState.Loading -> {
+            LoadingState()
+        }
+        is DetailUIState.Loaded -> {
+            DetailScreenContent(
+                character = state.data,
+                favorite = favorite,
+                onFavorite = viewModel::onFavoriteClick,
+                onNavigateBack = navigateToHome,
+            )
+        }
+    }
+
 }
 
 @Composable
@@ -110,8 +120,8 @@ fun CharacterDetail(character: Character) {
         modifier = Modifier.fillMaxWidth(),
     ) {
         Row(modifier = Modifier.padding(all = 16.dp)) {
-            Image(
-                painter = painterResource(character.imageRes),
+            AsyncImage(
+                model = character.image,
                 modifier = Modifier
                     .clip(RoundedCornerShape(8.dp))
                     .size(150.dp),

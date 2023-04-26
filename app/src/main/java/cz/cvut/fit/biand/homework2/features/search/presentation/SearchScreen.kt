@@ -27,29 +27,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavController
 import cz.cvut.fit.biand.homework2.R
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
-import cz.cvut.fit.biand.homework2.navigation.Screen
 import cz.cvut.fit.biand.homework2.features.list.presentation.CharacterListItem
 
 @Composable
 fun SearchScreen(
-    navController: NavController,
+    navigateToHome: () -> Unit,
+    navigateToDetails: (Int) -> Unit,
     viewModel: SearchViewModel = SearchViewModel(),
 ) {
     val characters by viewModel.characters.collectAsState()
     val searchedText by viewModel.searchText.collectAsState()
 
     SearchScreenContent(
-        onNavigateBack = { navController.popBackStack() },
+        onNavigateBack = navigateToHome,
         searchedText = searchedText,
         characters = characters,
         onSearch = viewModel::searchCharacters,
         onClear = viewModel::clearText,
-        onCharacterClicked = {
-            navController.navigate(Screen.DetailScreen.route + "/$it")
-        },
+        onCharacterClicked = navigateToDetails,
     )
 }
 

@@ -48,13 +48,14 @@ fun Navigation() {
                 ),
             ) { entry ->
                 DetailScreen(
-                    navController = navController,
+                    { navController.popBackStack()},
                     id = entry.arguments?.getInt("id"),
                 )
             }
             composable(route = Screen.SearchScreen.route) {
                 SearchScreen(
-                    navController = navController,
+                    { navController.popBackStack()},
+                    {  navController.navigate(Screen.DetailScreen.route + "/$it") }
                 )
             }
             composable(route = Screen.TopLevel.FavouritesScreen.route) {
