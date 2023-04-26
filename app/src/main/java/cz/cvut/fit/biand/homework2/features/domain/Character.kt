@@ -15,7 +15,8 @@ data class Character(
     val origin: String,
     val location: String,
     @DrawableRes val imageRes: Int = R.drawable.avatar1,
-    val image: String = ""
+    val image: String = "",
+    var isFavourite: Boolean = false
 )
 
 fun CharacterEntity.toCharacter(): Character {
@@ -29,6 +30,7 @@ fun CharacterEntity.toCharacter(): Character {
         origin = origin,
         location = location,
         image = image,
+        isFavourite = isFavourite
     )
 }
 fun CharacterApi.toCharacter(): Character {

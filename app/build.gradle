@@ -87,6 +87,8 @@ dependencies {
     def roomVersion = "2.5.1"
     implementation "androidx.room:room-ktx:$roomVersion"
     ksp "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-migration:$roomVersion"
+
 
     implementation "io.insert-koin:koin-android:3.4.0"
     implementation "io.insert-koin:koin-androidx-compose:3.4.3"

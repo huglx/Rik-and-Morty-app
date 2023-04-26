@@ -18,14 +18,19 @@ class DetailViewModel(
 
     fun getCharacter(id: Int) {
         viewModelScope.launch {
+            val response = detailRepository.getDetail(id).first()
             _character.value = DetailState(DetailUIState.Loaded(
-                data = detailRepository.getDetail(id).first()
+                data = response
             ))
+            favorite.value = response.isFavourite
         }
     }
 
-    fun onFavoriteClick() {
+    fun onFavoriteClick(id: Int) {
         favorite.value = !favorite.value
+        viewModelScope.launch {
+            detailRepository.setFavourite(id)
+        }
     }
 }
 

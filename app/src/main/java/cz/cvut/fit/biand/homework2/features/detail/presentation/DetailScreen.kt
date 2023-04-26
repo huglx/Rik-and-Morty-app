@@ -69,7 +69,7 @@ fun DetailScreen(
 fun DetailScreenContent(
     character: Character?,
     favorite: Boolean,
-    onFavorite: () -> Unit,
+    onFavorite: (Int) -> Unit,
     onNavigateBack: () -> Unit,
 ) {
     character?.let {
@@ -88,7 +88,7 @@ fun DetailScreenContent(
                         Text(text = character.name)
                     },
                     actions = {
-                        IconButton(onClick = onFavorite) {
+                        IconButton(onClick = { onFavorite(character.id) }) {
                             Icon(
                                 painter = if (favorite) {
                                     painterResource(id = R.drawable.ic_favorites_filled)

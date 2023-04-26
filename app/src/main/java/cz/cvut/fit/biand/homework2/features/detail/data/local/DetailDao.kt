@@ -9,4 +9,7 @@ import kotlinx.coroutines.flow.Flow
 interface DetailDao {
     @Query("select * from character c where c.id=:id")
     fun getDetail(id: Int): Flow<CharacterEntity?>
+
+    @Query("update character set isFavourite = true where id =:id")
+    suspend fun setFavourite(id: Int)
 }

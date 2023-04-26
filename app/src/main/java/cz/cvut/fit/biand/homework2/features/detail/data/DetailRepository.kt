@@ -21,4 +21,8 @@ class DetailRepository(
                 }
             }
     }
+
+    suspend fun setFavourite(id: Int) {
+        detailLocalDataSource.setFavourite(id)
+    }
 }

@@ -14,5 +14,6 @@ data class CharacterEntity(
     val gender: String,
     val origin: String,
     val location: String,
-    val image: String
+    val image: String,
+    var isFavourite: Boolean = false
 )
