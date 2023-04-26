@@ -10,9 +10,9 @@ class DetailRoomDataSource(
     private val detailDao: DetailDao
 ): DetailLocalDataSource {
 
-    override fun getDetail(id: Int): Flow<Character> {
+    override fun getDetail(id: Int): Flow<Character?> {
         return detailDao.getDetail(id).map {
-            it.toCharacter()
+            it?.toCharacter()
         }
     }
 }

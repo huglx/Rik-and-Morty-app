@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface DetailDao {
     @Query("select * from character c where c.id=:id")
-    fun getDetail(id: Int): Flow<CharacterEntity>
+    fun getDetail(id: Int): Flow<CharacterEntity?>
 }
