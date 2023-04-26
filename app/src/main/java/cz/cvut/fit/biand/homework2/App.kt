@@ -4,6 +4,7 @@ import android.app.Application
 import cz.cvut.fit.biand.homework2.core.di.coreModule
 import cz.cvut.fit.biand.homework2.features.detail.di.detailModule
 import cz.cvut.fit.biand.homework2.features.list.di.listModule
+import cz.cvut.fit.biand.homework2.features.search.di.searchModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -13,7 +14,7 @@ class App : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@App)
-            modules(listModule, coreModule, detailModule)
+            modules(listModule, coreModule, detailModule, searchModule)
         }
     }
 }

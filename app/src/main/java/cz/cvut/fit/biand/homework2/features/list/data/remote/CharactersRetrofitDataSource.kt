@@ -2,6 +2,7 @@ package cz.cvut.fit.biand.homework2.features.list.data.remote
 
 import cz.cvut.fit.biand.homework2.features.list.data.CharactersRemoteDataSource
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import cz.cvut.fit.biand.homework2.features.list.domain.toCharacter
 
 class CharactersRetrofitDataSource(
     private val charactersApiDescription: CharactersApiDescription
@@ -11,20 +12,4 @@ class CharactersRetrofitDataSource(
             it.toCharacter()
         }
     }
-}
-
-
-
-private fun CharacterApi.toCharacter(): Character {
-    return Character(
-        id = id,
-        name = name,
-        status = status,
-        species = species,
-        type = type,
-        gender = gender,
-        origin = origin.name,
-        location = location.name,
-        image = image,
-    )
 }

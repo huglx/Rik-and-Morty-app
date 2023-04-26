@@ -2,6 +2,7 @@ package cz.cvut.fit.biand.homework2.features.list.domain
 
 import androidx.annotation.DrawableRes
 import cz.cvut.fit.biand.homework2.R
+import cz.cvut.fit.biand.homework2.core.data.api.CharacterApi
 import cz.cvut.fit.biand.homework2.core.data.db.CharacterEntity
 
 data class Character(
@@ -27,6 +28,19 @@ fun CharacterEntity.toCharacter(): Character {
         gender = gender,
         origin = origin,
         location = location,
+        image = image,
+    )
+}
+fun CharacterApi.toCharacter(): Character {
+    return Character(
+        id = id,
+        name = name,
+        status = status,
+        species = species,
+        type = type,
+        gender = gender,
+        origin = origin.name,
+        location = location.name,
         image = image,
     )
 }

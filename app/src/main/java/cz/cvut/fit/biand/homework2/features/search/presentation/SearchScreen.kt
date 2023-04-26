@@ -27,27 +27,41 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cz.cvut.fit.biand.homework2.R
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
 import cz.cvut.fit.biand.homework2.features.list.presentation.CharacterListItem
+import cz.cvut.fit.biand.homework2.features.list.presentation.LoadingState
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SearchScreen(
     navigateToHome: () -> Unit,
     navigateToDetails: (Int) -> Unit,
-    viewModel: SearchViewModel = SearchViewModel(),
+    viewModel: SearchViewModel = koinViewModel(),
 ) {
-    val characters by viewModel.characters.collectAsState()
+    val UIstate by viewModel.characters.collectAsStateWithLifecycle()
     val searchedText by viewModel.searchText.collectAsState()
 
-    SearchScreenContent(
-        onNavigateBack = navigateToHome,
-        searchedText = searchedText,
-        characters = characters,
-        onSearch = viewModel::searchCharacters,
-        onClear = viewModel::clearText,
-        onCharacterClicked = navigateToDetails,
-    )
+
+    when(val state = UIstate.state) {
+        SearchUIState.Loading -> {
+            LoadingState()
+        }
+        SearchUIState.Error -> {
+            LoadingState()
+        }
+        is SearchUIState.Loaded -> {
+            SearchScreenContent(
+                onNavigateBack = navigateToHome,
+                searchedText = searchedText,
+                characters = state.data,
+                onSearch = viewModel::searchCharacters,
+                onClear = viewModel::clearText,
+                onCharacterClicked = navigateToDetails,
+            )
+        }
+    }
 }
 
 @Composable
@@ -80,7 +94,9 @@ fun SearchScreenContent(
             )
         },
     ) {
-        LazyColumn(modifier = Modifier.fillMaxSize().padding(it)) {
+        LazyColumn(modifier = Modifier
+            .fillMaxSize()
+            .padding(it)) {
             items(characters) { character ->
                 CharacterListItem(
                     character = character,

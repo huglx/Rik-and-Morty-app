@@ -1,32 +1,44 @@
 package cz.cvut.fit.biand.homework2.features.search.presentation
 
 import androidx.lifecycle.ViewModel
-import cz.cvut.fit.biand.homework2.data.CharactersDataSource
-import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import cz.cvut.fit.biand.homework2.features.search.data.SearchRepository
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import cz.cvut.fit.biand.homework2.features.list.domain.Character
 
-class SearchViewModel : ViewModel() {
-    private val _allCharacters = MutableStateFlow(CharactersDataSource.getAllCharacters())
+class SearchViewModel(
+    private val searchRepository: SearchRepository
+) : ViewModel() {
+    private val _characters = MutableStateFlow(SearchState(SearchUIState.Loading))
 
-    private val _characters = MutableStateFlow(CharactersDataSource.getAllCharacters())
-    val characters: StateFlow<List<Character>> = _characters
-
+    val characters get() = _characters
     val searchText: MutableStateFlow<String> = MutableStateFlow("")
 
     fun searchCharacters(name: String) {
         searchText.value = name
         if (name.isBlank()) {
-            _characters.value = _allCharacters.value
+            //_characters.value = _allCharacters.value
         } else {
-            _characters.value = _allCharacters.value.filter { character ->
-                character.name.lowercase().contains(name.lowercase())
-            }
+            //_characters.value = _allCharacters.value.filter { character ->
+             //   character.name.lowercase().contains(name.lowercase())
+            //}
         }
     }
 
     fun clearText() {
-        _characters.value = _allCharacters.value
+       // _characters.value = _allCharacters.value
         searchText.value = ""
     }
 }
+
+sealed interface SearchUIState {
+    object Loading: SearchUIState
+    data class Loaded(
+        val data: List<Character>
+    ): SearchUIState
+    object Error: SearchUIState
+
+}
+
+data class SearchState(
+    val state: SearchUIState
+)

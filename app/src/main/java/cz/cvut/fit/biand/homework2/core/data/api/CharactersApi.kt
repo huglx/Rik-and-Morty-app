@@ -1,4 +1,4 @@
-package cz.cvut.fit.biand.homework2.features.list.data.remote
+package cz.cvut.fit.biand.homework2.core.data.api
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
