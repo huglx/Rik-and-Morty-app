@@ -1,7 +1,7 @@
 package cz.cvut.fit.biand.homework2.features.search.data.remote
 
-import cz.cvut.fit.biand.homework2.features.list.domain.Character
-import cz.cvut.fit.biand.homework2.features.list.domain.toCharacter
+import cz.cvut.fit.biand.homework2.features.domain.Character
+import cz.cvut.fit.biand.homework2.features.domain.toCharacter
 import cz.cvut.fit.biand.homework2.features.search.data.SearchRemoteDataSource
 
 class SearchRetrofitDataSource(

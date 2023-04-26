@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import cz.cvut.fit.biand.homework2.R
-import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import cz.cvut.fit.biand.homework2.features.domain.Character
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

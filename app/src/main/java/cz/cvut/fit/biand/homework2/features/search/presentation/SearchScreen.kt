@@ -28,7 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cz.cvut.fit.biand.homework2.R
-import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import cz.cvut.fit.biand.homework2.features.domain.Character
 import cz.cvut.fit.biand.homework2.features.list.presentation.CharacterListItem
 import cz.cvut.fit.biand.homework2.features.list.presentation.LoadingState
 import org.koin.androidx.compose.koinViewModel

@@ -1,6 +1,6 @@
 package cz.cvut.fit.biand.homework2.features.detail.data
 
-import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import cz.cvut.fit.biand.homework2.features.domain.Character
 import kotlinx.coroutines.flow.Flow
 
 class DetailRepository(

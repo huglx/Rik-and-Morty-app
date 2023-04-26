@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cz.cvut.fit.biand.homework2.features.search.data.SearchRepository
 import kotlinx.coroutines.flow.MutableStateFlow
-import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import cz.cvut.fit.biand.homework2.features.domain.Character
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
@@ -21,6 +21,7 @@ class SearchViewModel(
             _characters.value = SearchState(SearchUIState.ErrorOrEmpty)
         } else {
             viewModelScope.launch {
+                _characters.value = SearchState(SearchUIState.Loading)
                 val response = searchRepository.getCharactersByName(name)
                 _characters.value = if (response.isSuccess) {
                     SearchState(SearchUIState.Loaded(response.characters))
@@ -33,7 +34,6 @@ class SearchViewModel(
     }
 
     fun clearText() {
-       // _characters.value = _allCharacters.value
         _characters.value = SearchState(SearchUIState.ErrorOrEmpty)
         searchText.value = ""
     }

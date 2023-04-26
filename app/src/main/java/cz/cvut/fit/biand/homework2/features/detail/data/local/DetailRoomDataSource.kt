@@ -1,8 +1,8 @@
 package cz.cvut.fit.biand.homework2.features.detail.data.local
 
 import cz.cvut.fit.biand.homework2.features.detail.data.DetailLocalDataSource
-import cz.cvut.fit.biand.homework2.features.list.domain.Character
-import cz.cvut.fit.biand.homework2.features.list.domain.toCharacter
+import cz.cvut.fit.biand.homework2.features.domain.Character
+import cz.cvut.fit.biand.homework2.features.domain.toCharacter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

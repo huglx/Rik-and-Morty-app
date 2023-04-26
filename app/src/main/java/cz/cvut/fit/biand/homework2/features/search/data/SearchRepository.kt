@@ -1,6 +1,6 @@
 package cz.cvut.fit.biand.homework2.features.search.data
 
-import cz.cvut.fit.biand.homework2.features.list.domain.CharacterResponse
+import cz.cvut.fit.biand.homework2.features.domain.CharacterResponse
 
 class SearchRepository(
     private val searchRemoteDataSource: SearchRemoteDataSource

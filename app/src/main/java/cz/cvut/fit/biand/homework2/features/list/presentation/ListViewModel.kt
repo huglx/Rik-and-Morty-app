@@ -3,7 +3,7 @@ package cz.cvut.fit.biand.homework2.features.list.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cz.cvut.fit.biand.homework2.features.list.data.CharactersRepository
-import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import cz.cvut.fit.biand.homework2.features.domain.Character
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 

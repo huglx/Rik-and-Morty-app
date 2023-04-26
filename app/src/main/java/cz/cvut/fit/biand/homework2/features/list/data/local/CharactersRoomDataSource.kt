@@ -2,8 +2,8 @@ package cz.cvut.fit.biand.homework2.features.list.data.local
 
 import cz.cvut.fit.biand.homework2.core.data.db.CharacterEntity
 import cz.cvut.fit.biand.homework2.features.list.data.CharactersLocalDataSource
-import cz.cvut.fit.biand.homework2.features.list.domain.Character
-import cz.cvut.fit.biand.homework2.features.list.domain.toCharacter
+import cz.cvut.fit.biand.homework2.features.domain.Character
+import cz.cvut.fit.biand.homework2.features.domain.toCharacter
 
 class CharactersRoomDataSource(
     private val listDao: ListDao
