@@ -1,14 +1,16 @@
 package cz.cvut.fit.biand.homework2.features.search.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import cz.cvut.fit.biand.homework2.features.search.data.SearchRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import cz.cvut.fit.biand.homework2.features.list.domain.Character
+import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val searchRepository: SearchRepository
 ) : ViewModel() {
-    private val _characters = MutableStateFlow(SearchState(SearchUIState.Loading))
+    private val _characters = MutableStateFlow(SearchState(SearchUIState.ErrorOrEmpty))
 
     val characters get() = _characters
     val searchText: MutableStateFlow<String> = MutableStateFlow("")
@@ -16,16 +18,23 @@ class SearchViewModel(
     fun searchCharacters(name: String) {
         searchText.value = name
         if (name.isBlank()) {
-            //_characters.value = _allCharacters.value
+            _characters.value = SearchState(SearchUIState.ErrorOrEmpty)
         } else {
-            //_characters.value = _allCharacters.value.filter { character ->
-             //   character.name.lowercase().contains(name.lowercase())
-            //}
+            viewModelScope.launch {
+                val response = searchRepository.getCharactersByName(name)
+                _characters.value = if (response.isSuccess) {
+                    SearchState(SearchUIState.Loaded(response.characters))
+                }else{
+                    SearchState(SearchUIState.ErrorOrEmpty)
+                }
+
+            }
         }
     }
 
     fun clearText() {
        // _characters.value = _allCharacters.value
+        _characters.value = SearchState(SearchUIState.ErrorOrEmpty)
         searchText.value = ""
     }
 }
@@ -35,7 +44,7 @@ sealed interface SearchUIState {
     data class Loaded(
         val data: List<Character>
     ): SearchUIState
-    object Error: SearchUIState
+    object ErrorOrEmpty: SearchUIState
 
 }
 
