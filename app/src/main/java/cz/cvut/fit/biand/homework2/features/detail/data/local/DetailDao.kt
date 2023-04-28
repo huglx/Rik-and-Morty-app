@@ -12,4 +12,7 @@ interface DetailDao {
 
     @Query("update character set isFavourite = true where id =:id")
     suspend fun setFavourite(id: Int)
+
+    @Query("update character set isFavourite = false where id =:id")
+    suspend fun unSetFavourite(id: Int)
 }

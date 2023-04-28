@@ -19,4 +19,8 @@ class DetailRoomDataSource(
     override suspend fun setFavourite(id: Int) {
         detailDao.setFavourite(id)
     }
+
+    override suspend fun unSetFavourite(id: Int) {
+        detailDao.unSetFavourite(id)
+    }
 }

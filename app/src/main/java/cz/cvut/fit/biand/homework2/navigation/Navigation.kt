@@ -59,7 +59,9 @@ fun Navigation() {
                 )
             }
             composable(route = Screen.TopLevel.FavouritesScreen.route) {
-                FavouritesScreen()
+                FavouritesScreen(
+                    navigateToDetails = {  navController.navigate(Screen.DetailScreen.route + "/$it") }
+                )
             }
         }
     }

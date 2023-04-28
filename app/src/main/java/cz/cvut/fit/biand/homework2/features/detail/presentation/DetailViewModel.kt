@@ -29,7 +29,10 @@ class DetailViewModel(
     fun onFavoriteClick(id: Int) {
         favorite.value = !favorite.value
         viewModelScope.launch {
-            detailRepository.setFavourite(id)
+            if (favorite.value)
+                detailRepository.setFavourite(id)
+            else
+                detailRepository.unSetFavourite(id)
         }
     }
 }

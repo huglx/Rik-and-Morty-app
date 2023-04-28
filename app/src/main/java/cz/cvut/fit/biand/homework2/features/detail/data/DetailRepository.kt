@@ -25,4 +25,8 @@ class DetailRepository(
     suspend fun setFavourite(id: Int) {
         detailLocalDataSource.setFavourite(id)
     }
+
+    suspend fun unSetFavourite(id: Int) {
+        detailLocalDataSource.unSetFavourite(id)
+    }
 }
