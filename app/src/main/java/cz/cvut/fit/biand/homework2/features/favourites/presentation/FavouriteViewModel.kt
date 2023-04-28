@@ -13,6 +13,7 @@ class FavouriteViewModel(
     private val _characters = MutableStateFlow(FavouriteState(FavouriteUIState.Empty))
     val characters get() = _characters
 
+
     init {
         viewModelScope.launch {
             val response = favouriteRepository.getFavourite()
@@ -22,6 +23,8 @@ class FavouriteViewModel(
                 )
             }else
                 _characters.value = FavouriteState(FavouriteUIState.Empty)
+
+
         }
     }
 }
