@@ -1,5 +1,6 @@
 package cz.cvut.fit.biand.homework2.features.detail.presentation
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +23,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -43,6 +45,8 @@ fun DetailScreen(
 ) {
     val character by viewModel.character.collectAsStateWithLifecycle()
     val favorite by viewModel.favorite.collectAsState()
+    val charIsInDBh by viewModel.charIsInDB.collectAsState()
+
     LaunchedEffect(Unit) {
         id?.let {
             viewModel.getCharacter(id)
@@ -57,6 +61,7 @@ fun DetailScreen(
             DetailScreenContent(
                 character = state.data,
                 favorite = favorite,
+                charIsInDBh =  charIsInDBh,
                 onFavorite = viewModel::onFavoriteClick,
                 onNavigateBack = navigateToHome,
             )
@@ -69,9 +74,11 @@ fun DetailScreen(
 fun DetailScreenContent(
     character: Character?,
     favorite: Boolean,
+    charIsInDBh: Boolean,
     onFavorite: (Int) -> Unit,
     onNavigateBack: () -> Unit,
 ) {
+    val context = LocalContext.current
     character?.let {
         Scaffold(
             topBar = {
@@ -88,7 +95,12 @@ fun DetailScreenContent(
                         Text(text = character.name)
                     },
                     actions = {
-                        IconButton(onClick = { onFavorite(character.id) }) {
+                        IconButton(onClick = {
+                            if(!charIsInDBh)
+                                Toast.makeText(context, R.string.showWarning, Toast.LENGTH_LONG).show()
+                            else
+                                onFavorite(character.id)
+                        }) {
                             Icon(
                                 painter = if (favorite) {
                                     painterResource(id = R.drawable.ic_favorites_filled)

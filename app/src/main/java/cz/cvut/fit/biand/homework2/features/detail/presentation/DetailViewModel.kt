@@ -15,14 +15,16 @@ class DetailViewModel(
     val character get() = _character
 
     val favorite: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val charIsInDB: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     fun getCharacter(id: Int) {
         viewModelScope.launch {
             val response = detailRepository.getDetail(id).first()
             _character.value = DetailState(DetailUIState.Loaded(
-                data = response
+                data = response.data
             ))
-            favorite.value = response.isFavourite
+            favorite.value = response.data.isFavourite
+            charIsInDB.value = response.isFromDB
         }
     }
 
@@ -34,6 +36,7 @@ class DetailViewModel(
             else
                 detailRepository.unSetFavourite(id)
         }
+
     }
 }
 

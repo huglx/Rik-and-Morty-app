@@ -2,7 +2,7 @@ package cz.cvut.fit.biand.homework2.core.data.db
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
+//same as for api data class
 @Entity(tableName = "character")
 data class CharacterEntity(
     @PrimaryKey

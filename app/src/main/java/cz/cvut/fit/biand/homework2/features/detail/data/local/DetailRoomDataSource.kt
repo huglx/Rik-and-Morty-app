@@ -15,7 +15,6 @@ class DetailRoomDataSource(
             it?.toCharacter()
         }
     }
-
     override suspend fun setFavourite(id: Int) {
         detailDao.setFavourite(id)
     }

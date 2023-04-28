@@ -3,6 +3,8 @@ package cz.cvut.fit.biand.homework2.core.data.api
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+
+//data class CharactersApi is the same for several api calls, so I decided to leave it here in core
 @Serializable
 @SerialName("results")
 data class Results(

@@ -14,7 +14,7 @@ class FavouriteViewModel(
     val characters get() = _characters
 
 
-    init {
+    fun getFavourite(){
         viewModelScope.launch {
             val response = favouriteRepository.getFavourite()
             if(response.isNotEmpty()) {

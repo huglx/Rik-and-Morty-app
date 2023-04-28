@@ -5,7 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface DetailLocalDataSource {
     fun getDetail(id: Int): Flow<Character?>
-
     suspend fun setFavourite(id: Int)
     suspend fun unSetFavourite(id: Int)
 }

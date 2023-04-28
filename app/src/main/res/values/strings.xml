@@ -3,7 +3,8 @@
 
     <string name="characters">Characters</string>
     <string name="favorites">Favorites</string>
-
+    <string name="empty_fav">No favourites yet</string>
+    <string name="empty_search">Nothing was found</string>
     <string name="avatar">Character avatar</string>
     <string name="name">Name</string>
     <string name="status">Status</string>
@@ -14,4 +15,5 @@
     <string name="location">Location</string>
     <string name="favorite">Favorite</string>
     <string name="search">Search</string>
+    <string name="showWarning">Character is not saved, so can\'t be set as favourite</string>
 </resources>

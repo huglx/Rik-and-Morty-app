@@ -142,10 +142,10 @@ fun CharacterListItem(
 }
 
 @Composable
-fun LoadingState() {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        CircularProgressIndicator(
-            color = Color.Blue
-        )
-    }
+fun LoadingState() {Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+    CircularProgressIndicator(
+        color = Color.Blue
+    )
+}
+
 }

@@ -15,7 +15,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cz.cvut.fit.biand.homework2.R
 import cz.cvut.fit.biand.homework2.features.domain.Character
 import cz.cvut.fit.biand.homework2.features.list.presentation.CharacterListItem
-import cz.cvut.fit.biand.homework2.features.search.presentation.EmptyState
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -25,6 +24,7 @@ fun FavouritesScreen(
 ) {
     val characters by viewModel.characters.collectAsStateWithLifecycle()
 
+    viewModel.getFavourite()
     when(val state = characters.state) {
         FavouriteUIState.Empty -> {
             EmptyState()
@@ -43,7 +43,6 @@ fun FavouriteScreenContent(
     characters: List<Character>,
     onCharacterClicked: (Int) -> Unit
 ) {
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -72,5 +71,12 @@ fun FavouriteScreenContent(
                 )
             }
         }
+    }
+}
+
+@Composable
+fun EmptyState() {
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Text(text = stringResource(id = R.string.empty_fav))
     }
 }
